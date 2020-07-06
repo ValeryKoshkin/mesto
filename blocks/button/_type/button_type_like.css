@@ -1,0 +1,9 @@
+.button_type_like {
+	transition: transform 0.5s ease-out;
+	margin: 0;
+}
+
+.button_type_like:hover {
+	cursor: pointer;
+	transform: scale(1.2);
+}

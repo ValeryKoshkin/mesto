@@ -1,0 +1,12 @@
+.gallery__name {
+	margin-top: 21px;
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-between;
+	max-width: 246px;
+	margin: 0 auto;
+	margin-top: 21px;
+}

@@ -1,0 +1,28 @@
+@import url(./__card/profile__card.css);
+@import url(./__name/profile__name.css);
+@import url(./__job/profile__job.css);
+@import url(./__image-container/image-container.css);
+@import url(./__image/profile__image.css);
+
+
+.profile {
+	display: -webkit-flex;
+	display: -moz-flex;
+	display: -ms-flex;
+	display: -o-flex;
+	display: flex;
+	justify-content: space-between;
+	-ms-align-items: center;
+	align-items: center;
+	margin: 36px 0 47px 0;
+}
+
+@media screen and (max-width: 881px) {
+	.profile {
+		-webkit-flex-direction: column;
+		-moz-flex-direction: column;
+		-ms-flex-direction: column;
+		-o-flex-direction: column;
+		flex-direction: column;
+	}
+}

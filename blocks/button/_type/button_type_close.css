@@ -1,0 +1,14 @@
+.button_type_close {
+	position: absolute;
+	top: -45px;
+	right: -45px;
+}
+
+@media screen and (max-width: 520px) {
+	.button_type_close{
+		width: 25px;
+    	height: 25px;
+    	top: -17px;
+    	right: -17px;
+	}
+}
