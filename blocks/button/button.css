@@ -5,6 +5,8 @@
 
 .button {
 	transition: 0.5s;
+	border: none;
+	
 }
 
 .button:hover {

@@ -5,6 +5,8 @@
 	transition: 0.5s;
 	display: inline-block;
 	background-color: #000;
+	vertical-align: middle;
+	margin-top: 5px;
 }
 
 @media screen and (max-width: 614px){

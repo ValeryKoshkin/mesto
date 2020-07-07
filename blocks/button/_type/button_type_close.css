@@ -1,14 +1,19 @@
 .button_type_close {
 	position: absolute;
-	top: -45px;
-	right: -45px;
+	top: -34px;
+    right: -34px;
+	background-color: rgba(0, 0, 0, 0);
+	width: 41px;
+	height: 41px;
+	background-image: url(../../../image/Close_Icon.png);
+	background-size: contain;
 }
 
 @media screen and (max-width: 520px) {
 	.button_type_close{
 		width: 25px;
     	height: 25px;
-    	top: -17px;
-    	right: -17px;
+    	top: -20px;
+    	right: -20px;
 	}
 }
