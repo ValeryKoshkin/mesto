@@ -26,7 +26,7 @@ function submitHandler (event){
 	event.preventDefault();
 	profileName.textContent = inputName.value;
 	profileJob.textContent = inputJob.value;
-	popup.classList.remove('popup_opened');
+	closeModalWindow ();
 }
 
 

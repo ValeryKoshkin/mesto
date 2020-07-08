@@ -1,10 +1,10 @@
 .button_type_close {
 	position: absolute;
-	top: -34px;
-    right: -34px;
+	top: -41px;
+    right: -41px;
 	background-color: rgba(0, 0, 0, 0);
-	width: 41px;
-	height: 41px;
+	width: 52px;
+	height: 52px;
 	background-image: url(../../../image/Close_Icon.png);
 	background-size: contain;
 }

@@ -2,33 +2,5 @@
 @import url(./__image/gallery__image.css);
 @import url(./__title/gallery__title.css);
 @import url(./__name/gallery__name.css);
+@import url(./__list/gallery__list.css);
 
-
-.gallery { 
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-template-rows: repeat(2, 361px);
-	grid-row-gap: 20px;
-	grid-column-gap: 18px;
-    padding: 0;
-    margin: 0;
-}
-
-@media screen and (max-width: 881px) {
-.gallery {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(3, 361px);
-    max-width: 584px;
-    margin: auto;
-}
-}
-
-
-@media screen and (max-width: 614px) {
-.gallery {
-    grid-template-columns: 1fr ;
-    grid-template-rows: repeat(6, 361px);
-    max-width: 282px;
-    
-}
-}
