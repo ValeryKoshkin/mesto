@@ -1,0 +1,10 @@
+.gallery__image {
+	height: 282px;
+	border-radius: 10px;
+	-webkit-background-size: cover;
+	background-size: cover;
+}
+
+.gallery__image:hover{
+	cursor: pointer;
+}

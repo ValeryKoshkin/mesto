@@ -24,64 +24,15 @@
 						<h1 class="profile__name">Жак-Ив Кусто</h1>
 						<button class="button button_type_edit" type="button"></button>
 						<h2 class="profile__job">Исследователь океана</h2>
-
 					</div>
-					
 				</div>
 				<button class="button button_type_add" type="button"></button>
-			</section >
+			</section>
+			
 			<section class="gallery">
 			<ul class="gallery__list">
-				<li class="gallery__item">
-					<img src="image/kirill-pershin-1088404-unsplash.png" class="gallery__image" alt="здание на скале">
-					<div class="gallery__name">
-					<h3 class="gallery__title">Карачаевск</h3>
-					<button type="button" class="button button_type_like"></button>
-					</div>
-				</li>
-				
-				<li class="gallery__item">
-					<img src="image/kirill-pershin-1404681-unsplash.png" class="gallery__image" alt="закат">
-					<div class="gallery__name">
-					<h3 class="gallery__title">Гора Эльбрус</h3>
-					<button type="button" class="button button_type_like"></button>
-					</div>
-				</li>
-				
-				<li class="gallery__item">
-					<img src="image/kirill-pershin-1556355-unsplash.png" class="gallery__image" alt="горы">
-					<div class="gallery__name">
-					<h3 class="gallery__title">Домбай</h3>
-					<button type="button" class="button button_type_like"></button>
-					</div>
-				</li>
-				
-				<li class="gallery__item">
-					<img src="image/kirill-pershin-1404681-unsplash.png" class="gallery__image" alt="закат">
-					<div class="gallery__name">
-					<h3 class="gallery__title">Гора Эльбрус</h3>
-					<button type="button" class="button button_type_like"></button>
-					</div>
-				</li>
-				
-				<li class="gallery__item">
-					<img src="image/kirill-pershin-1556355-unsplash.png" class="gallery__image" alt="горы">
-					<div class="gallery__name">
-					<h3 class="gallery__title">Домбай</h3>
-					<button type="button" class="button button_type_like"></button>
-					</div>
-				</li>
-				
-			<li class="gallery__item">
-					<img src="image/kirill-pershin-1088404-unsplash.png" class="gallery__image" alt="здание на скале">
-					<div class="gallery__name">
-					<h3 class="gallery__title">Карачаево-Черкессия</h3>
-					<button type="button" class="button button_type_like"></button>
-					</div>
-				</li>
 			</ul>
 			</section>
-
 		</main>
 		
 		<footer class="footer">
@@ -89,7 +40,7 @@
 		</footer>
 	</div>
 	
-	<div class="popup">
+	<div class="popup popup_type_edit">
 		<div class="popup__container">
 			<h2 class="popup__title">Редактировать профиль</h2>
 			<form action="#" class="form" name="user-info"> 
@@ -100,6 +51,37 @@
 			<button type="button" class="button button_type_close"></button>
 		</div>
 	</div>	
+
+	<div class="popup popup_type_add">
+		<div class="popup__container">
+			<h2 class="popup__title">Новое место</h2>
+			<form action="#" class="form" name="user-info"> 
+				<input type="text" name="name" class="form__input form__input_type_place" value="Новое место">
+				<input type="text" name="job" class="form__input form__input_type_url" value="Ссылка на картинку">
+				<button type="submit" class="form__button">Создать</button>
+			</form>
+			<button type="button" class="button button_type_close"></button>
+		</div>
+	</div>	
+
+	<div class="popup popup_type_image">
+			<div class="popup__image-container">
+				<img class="popup__image" src="">
+				<h3 class="popup__image-title"></h3>
+				<button type="button" class="button button_type_close"></button>
+			</div>
+	</div>	
+
+	<template class="template-card">
+		<li class="gallery__item">
+			<div class="gallery__image"></div>
+				<div class="gallery__name">
+				<h3 class="gallery__title"></h3>
+				<button type="button" class="button button_type_delete"></button>
+				<button type="button" class="button button_type_like"></button>
+			</div>
+		</li>
+	</template>
 	<script src="script/index.js"></script>
 </body>
 </html>

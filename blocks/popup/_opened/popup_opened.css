@@ -1,7 +1,8 @@
 .popup_opened {
 	display: -webkit-flex;
 	display: -moz-flex;
-	display: -ms-flex;
+	display: -ms-flex; 
 	display: -o-flex;
-	display: flex;
+	opacity: 1;
+  visibility: visible;
 }
