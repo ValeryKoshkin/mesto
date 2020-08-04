@@ -15,10 +15,14 @@
 	transition: .3s;
 }
 
+
+
+
 .form__button:hover {
 	cursor: pointer;
 	background: rgba(0, 0, 0, 0.8);
 }
+
 
 
 @media screen and (max-width: 520px) { 

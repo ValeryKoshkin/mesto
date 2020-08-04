@@ -2,7 +2,7 @@
 const popupTypeEdit = document.querySelector('.popup_type_edit');
 const popupTypeAdd = document.querySelector('.popup_type_add');
 const popupTypeImage = document.querySelector('.popup_type_image');
-
+const popupList = Array.from(document.querySelectorAll('.popup'));
 
 
 //Поиск кнопок модалок
@@ -42,25 +42,21 @@ const profileJob = document.querySelector('.profile__job');
 
 
 
-
 function toggleAddWindow (){
     popupTypeAdd.classList.toggle('popup_opened');
+        
 }
 
 
 
 function toggleEditWindow (){
-	inputName.value = profileName.textContent;
-	inputJob.value = profileJob.textContent;
-	popupTypeEdit.classList.toggle('popup_opened');
+    popupTypeEdit.classList.toggle('popup_opened');
 }
 
 
 function submitHandlerEdit (event){
-	event.preventDefault();
-	profileName.textContent = inputName.value;
-	profileJob.textContent = inputJob.value;
-	toggleEditWindow();
+    event.preventDefault();
+    toggleEditWindow();
 }
 
 function submitHandlerAdd (event){
@@ -68,7 +64,33 @@ function submitHandlerAdd (event){
     renderCard({name: inputPlace.value, link: inputURL.value});
     toggleAddWindow();
 }
-
+//Закрытие через клик
+function closeOpenPopup () {
+    
+        popupList.forEach(function () {
+            document.addEventListener('click', function (evt){
+                if (evt.target.classList.contains('popup_opened')){
+                    evt.target.classList.remove('popup_opened');
+                }
+            });
+        });
+}
+closeOpenPopup ();
+//Закрытие через Escape
+function closeOpenEsc () {
+    
+        popupList.forEach(function () {
+            document.addEventListener('keydown', function (evt){
+                if(evt.key === 'Escape'){
+                    popupTypeAdd.classList.remove('popup_opened');
+                    popupTypeEdit.classList.remove('popup_opened');
+                    popupTypeImage.classList.remove('popup_opened');
+                    
+                   }  
+            });
+        });
+}
+closeOpenEsc ();
 
 
 openEditModalButton.addEventListener('click', toggleEditWindow); 
@@ -82,6 +104,8 @@ closeAddModalButton.addEventListener('click', toggleAddWindow);
 formEdit.addEventListener('submit', submitHandlerEdit);
 
 formAdd.addEventListener('submit', submitHandlerAdd);
+
+
 
 
 const initialCards = [
