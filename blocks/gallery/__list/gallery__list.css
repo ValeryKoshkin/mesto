@@ -1,7 +1,7 @@
 .gallery__list { 
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
-	grid-template-rows: repeat(2, 361px);
+	grid-template-rows: auto;
 	grid-row-gap: 20px;
 	grid-column-gap: 18px;
     padding: 0;

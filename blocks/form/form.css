@@ -4,3 +4,4 @@
 @import url(./__error/form__error.css);
 @import url(./__input/_type/form__input_type_name.css);
 @import url(./__input/_type/form__input_type_job.css);
+@import url(./__input/_type/form__input_type_error.css);
