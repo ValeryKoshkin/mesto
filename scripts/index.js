@@ -30,6 +30,7 @@ const popupTypeAdd = document.querySelector('.popup_type_add');
 const popupTypeImage = document.querySelector('.popup_type_image');
 const popupList = Array.from(document.querySelectorAll('.popup'));
 const popup = document.querySelector('.popup');
+const popupOpened = document.querySelectorAll('.popup_opened');
 const openEditModalButton = document.querySelector('.button_type_edit');
 const openAddModalButton = document.querySelector('.button_type_add');
 const closeEditModalButton = popupTypeEdit.querySelector('.button_type_close');
@@ -66,12 +67,12 @@ function deleteBorder () {
 
 function openPopup (popup) {
     popup.classList.add('popup_opened');
-    document.addEventListener('click', handleESC); 
+    document.addEventListener('keydown', handleESC); 
 }
 
 function closePopup (popup) {
     popup.classList.remove('popup_opened');
-    document.removeEventListener('click', handleESC); 
+    document.removeEventListener('keydown',  handleESC); 
 }
 
 function openProfilePopup() {
@@ -113,15 +114,13 @@ function setClosePopupOverlay () {
         });
 };
 
-function handleESC () {
-    popupList.forEach(function (popup) {
-            document.addEventListener('keydown', function (evt){
-                if(evt.key === 'Escape'){
-                    closePopup(popup)  
-                    }  
-            });
-        });
-};
+
+
+function handleESC (evt) { 
+    if(evt.key === 'Escape'){ 
+        closePopup(document.querySelector('.popup_opened'))     
+        }  
+}; 
 
 setClosePopupOverlay (closeByOverlay);
 
@@ -181,11 +180,12 @@ function createCard(data) {
     cardImage.addEventListener('click', () =>{ 
         imageModalPic.src = `${data.link}`; 
         imageModalTitle.textContent = data.name; 
-        popupTypeImage.classList.toggle('popup_opened'); 
+        openPopup(popupTypeImage);
+
     }); 
  
     closeImageButton.addEventListener('click', () =>{ 
-        popupTypeImage.classList.remove('popup_opened'); 
+        closePopup(popupTypeImage); 
     }) 
 
     cardTitle.textContent = data.name; 
