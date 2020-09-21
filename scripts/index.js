@@ -1,3 +1,15 @@
+
+const validationConfig = {
+    formSelector: '.form',
+    inputSelector: '.form__input',
+    submitButtonSelector: '.form__button',
+    inactiveButtonClass: 'form__button_disabled',
+    inputErrorClass: 'form__input_type_error',
+    errorClass: 'form__input-error_active'
+  };
+
+  
+
 const initialCards = [
     {
         name: 'Архыз',
@@ -100,6 +112,7 @@ function submitHandlerAdd (event){
     closePopup(popupTypeAdd);
     inputURL.value = '';
     inputPlace.value = '';
+    
 };
 
 function closeByOverlay (evt) {
@@ -114,6 +127,18 @@ function setClosePopupOverlay () {
         });
 };
 
+
+   
+function enableButton  (button , buttonModificator) { 
+  button.classList.remove(buttonModificator); 
+  button.disabled = false; 
+  } 
+
+
+function disableButton (button, buttonModificator) { 
+    button.classList.add(buttonModificator); 
+    
+  }; 
 
 
 function handleESC (evt) { 
@@ -152,50 +177,28 @@ closeAddModalButton.addEventListener('click', () => {
 formEdit.addEventListener('submit', submitHandlerEdit);
 formAdd.addEventListener('submit', submitHandlerAdd);
 
-const cardTemplate = document.querySelector('.template-card').content.querySelector('.gallery__item'); 
-const list = document.querySelector('.gallery__list'); 
- 
-function renderCard(data) { 
-     list.prepend(createCard(data)); 
+import {Card} from './Card.js'
+
+initialCards.forEach((item)=>{
+   renderCard(item)
+  });
+
+
+  function renderCard(item) { 
+    const card = new Card(item, '.template-card');
+    const cardNew = card.generateCard();
+    document.querySelector('.gallery__list').append(cardNew); 
 } ;
- 
-function createCard(data) { 
-    const cardElement = cardTemplate.cloneNode(true); 
-    const cardImage = cardElement.querySelector('.gallery__image'); 
-    const cardTitle = cardElement.querySelector('.gallery__title'); 
-    const cardLikeButton = cardElement.querySelector('.button_type_like'); 
-    const cardDeleteButton = cardElement.querySelector('.button_type_delete'); 
- 
-    cardLikeButton.addEventListener('click', (evt) =>{ 
-        evt.target.classList.toggle('button_type_like_active'); 
-         
- 
-    }); 
- 
-    cardDeleteButton.addEventListener('click', () =>{ 
-        const deleteButton = cardDeleteButton.closest('.gallery__item'); 
-            deleteButton.remove(); 
-    }); 
- 
-    cardImage.addEventListener('click', () =>{ 
-        imageModalPic.src = `${data.link}`; 
-        imageModalTitle.textContent = data.name; 
-        openPopup(popupTypeImage);
 
-    }); 
- 
-    closeImageButton.addEventListener('click', () =>{ 
-        closePopup(popupTypeImage); 
-    }) 
+const editFormModalWindow = document.querySelector('.formModalCard')
+const cardFormModalWindow = document.querySelector('.formModalEdit')
 
-    cardTitle.textContent = data.name; 
-    cardImage.style.backgroundImage = `url(${data.link})`; 
-    return cardElement; 
-} 
- 
-initialCards.forEach((data)=>{ 
-    renderCard(data) 
-    }) 
+import { FormValidator } from './FormValidator.js';
 
 
- 
+
+const editFormValidator = new FormValidator(validationConfig, editFormModalWindow);
+const cardFormValidator = new FormValidator(validationConfig, cardFormModalWindow);
+
+editFormValidator.enableValidation();
+cardFormValidator.enableValidation();
