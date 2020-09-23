@@ -1,6 +1,6 @@
 const popupTypeImage = document.querySelector('.popup_type_image');
 const closeImageButton =popupTypeImage.querySelector('.button_type_close');
-
+import {openPopup} from './index.js';
 export class Card {
     constructor(data, cardSelector) {
         this._name = data.name;
@@ -22,7 +22,7 @@ export class Card {
         return this._element
     }
     
-    _setEventListeners() {
+    _setEventListeners() { 
         //открытие попапа 
         this._element.querySelector('.gallery__image').addEventListener('click', () => {
             this._handleOpenPopup();
@@ -39,31 +39,31 @@ export class Card {
         this._element.querySelector('.button_type_delete').addEventListener('click', ()=>{
             this._deleteCard();
         });
-
-
-
-    }
+    ;}
 
     _handleOpenPopup() {
+        const imageModalTitle = popupTypeImage.querySelector('.popup__image-title');
+        const imageModalPic = popupTypeImage.querySelector('.popup__image');
+        
         imageModalPic.src = this._link;
         imageModalTitle.textContent = this._name;
         
         openPopup(popupTypeImage);
-    }
+    };
 
     _handleClosePopup() {
         closePopup(popupTypeImage);
-    }
+    };
 
     _handleLikeButton() {
         this._element.querySelector('.button_type_like').classList.toggle('button_type_like_active');
-        
-    }
+    };
 
     _deleteCard() {
-        const deleteButton = this._element.closest('.gallery__item'); 
-            deleteButton.remove(); 
-    }
+        const closestButton = this._element.closest('.gallery__item'); 
+            closestButton.remove(); 
+            this._element= null;
 
-}
+    };
+};
 

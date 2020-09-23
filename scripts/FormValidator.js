@@ -1,77 +1,87 @@
 export class FormValidator {
+  
   constructor (validationConfig, form) {
-      this.validationConfig = validationConfig
-      this._editFormModalWindow = editFormModalWindow;
-      this._cardFormModalWindow = cardFormModalWindow;
-      
-    }
+   this._validationConfig = validationConfig
+   this._formElement = form;
+   this._errorClass = validationConfig.errorClass;
+   this._inputErrorClass = validationConfig.inputErrorClass;
+   this._inactiveButtonClass = validationConfig.inactiveButtonClass;
+   this._submitButtonSelector = validationConfig.submitButtonSelector;
+   this._inputSelector = validationConfig.inputSelector;
+  }
   
-  _showError (formElement, inputElement, errorMessage) {
-    const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-    inputElement.classList.add('form__input_type_error');
+  _showError ( inputElement, errorMessage) {
+    const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
+    inputElement.classList.add(this._inputErrorClass);
     errorElement.textContent = errorMessage;
-    errorElement.classList.add('form__input-error_active');
-  }
+    errorElement.classList.add(this._errorClass);
+  };
   
-  _hideError(formElement, inputElement) {
-    const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
-    inputElement.classList.remove('form__input_type_error');
+  _hideError( inputElement) {
+    const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
+    inputElement.classList.remove(this._inputErrorClass);
     errorElement.textContent = '';
-    errorElement.classList.remove('form__input-error_active');
-  }
+    errorElement.classList.remove(this._errorClass);
+  };
   
-  _checkInputValidity (formElement, inputElement) {
+  _checkInputValidity ( inputElement) {
     if (!inputElement.validity.valid){  
-      this._showError(formElement, inputElement, inputElement.validationMessage);      
+      this._showError( inputElement, inputElement.validationMessage);      
       
     } else {
-      this._hideError(formElement, inputElement);
+      this._hideError( inputElement);
     }
     
   };
   
-  _hasInvalidInput (inputList) {
-    return inputList.some((inputElement) => {
+  _hasInvalidInput () {
+    return this._inputList.some((inputElement) => {
     return !inputElement.validity.valid;
     });
-  }
+  };
   
   
-  _toggleButtonState (inputList, buttonElement) {
-    if (this._hasInvalidInput(inputList)) {
-    buttonElement.classList.add('form__button_disabled');
+  _toggleButtonState () {
+    if (this._hasInvalidInput()) {
+      this._buttonElement.classList.add(this._inactiveButtonClass);
+    this._buttonElement.disabled = true;
   } else {
-    buttonElement.classList.remove('form__button_disabled');
-  }
+    this._buttonElement.classList.remove(this._inactiveButtonClass);
+    this._buttonElement.disabled = false;
+  };
+  };
   
-  }
-  
-  _setEventListeners(formElement) {
-    const buttonElement = formElement.querySelector('.form__button');
-    const inputList = Array.from(formElement.querySelectorAll('.form__input'));
-    this._toggleButtonState(inputList, buttonElement);
-      inputList.forEach((inputElement) => {
-        inputElement.addEventListener('input',  () => {
-        
-          this._checkInputValidity(formElement, inputElement);
-         this._toggleButtonState(inputList, buttonElement);
+  _deleteError (inputElement) {
+    const buttonList = Array.from(document.querySelectorAll('.button'))
+    const errorSpanList = Array.from(document.querySelectorAll('.form__error'));
+      buttonList.forEach((button)=>{
+        button.addEventListener('click', ()=>{
+          inputElement.classList.remove(this._inputErrorClass); //удалили нижнюю границу
+          errorSpanList.forEach((item)=>{
+            item.textContent='';                    //удалили текст ошибок
+          })
+        })
+      })
+};
+
+_setEventListeners() {
+    this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
+    this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
+    this._toggleButtonState();
+    this._inputList.forEach((inputElement) => {
+        this._deleteError(inputElement) ;
+          inputElement.addEventListener('input',  () => {
+        this._checkInputValidity( inputElement);
+        this._toggleButtonState();
       });
     });
-   
   };
   
   enableValidation(){
-    const formList = Array.from(document.querySelectorAll('.form'));
+    this._setEventListeners(this._formElement) 
+    };
+  };
   
-    formList.forEach((formElement)=>{
-      formElement.addEventListener('submit', (evt)=>{
-        evt.preventDefault;
-      })
-      this._setEventListeners(formElement) 
-    })
-    }
-  }
-
   export const editFormModalWindow = document.querySelector('.formModalCard');
   export const cardFormModalWindow = document.querySelector('.formModalEdit');
 

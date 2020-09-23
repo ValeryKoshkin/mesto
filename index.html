@@ -43,7 +43,7 @@
 	<div class="popup popup_type_edit">
 		<div class="popup__container">
             <h2 class="popup__title">Редактировать профиль</h2>
-            <form action="#" class="form" name="user-info" novalidate> 
+            <form action="#" class="form formModalEdit" name="user-info" novalidate> 
                 <input type="text" name="name" class="form__input form__input_type_name" value=""  minlength="7" maxlength="25" id="email-input" required autocomplete="off">
                 <span class='form__error' id='email-input-error'></span>
                 <input type="text" name="job" class="form__input form__input_type_job" value=""  minlength="7" maxlength="25" id="job-input" required autocomplete="off">
@@ -57,12 +57,12 @@
 	<div class="popup popup_type_add">
 		<div class="popup__container">
 			<h2 class="popup__title">Новое место</h2>
-			<form action="#" class="form" name="card"> 
+			<form action="#" class="form formModalCard" name="card"> 
 				<input type="text" name="name" class="form__input form__input_type_place" value="" placeholder="Название" minlength="1" maxlength="25" id="place-input" required autocomplete="off">
                 <span class='form__error' id='place-input-error'></span>
                 <input type="url" name="job" class="form__input form__input_type_url" value="" placeholder="Ссылка на картинку" minlength="7" maxlength="200" id="url-input" required autocomplete="off">
                 <span class='form__error' id='url-input-error'></span>
-				<button type="submit" class="form__button form__button_type_add form__button_disabled" >Создать</button>
+				<button type="submit" class="form__button form__button_type_add form__button_disabled" disabled>Создать</button>
 			</form>
 			<button type="button" class="button button_type_close"></button>
 		</div>
@@ -86,12 +86,6 @@
 			</div>
 		</li>
 	</template>
-	
-	
-	
 	<script type="module" src="scripts/index.js"></script>
-	<script type="module" src="scripts/Card.js"></script>
-	<script type="module" src="scripts/FormValidator.js"></script>
-	
 </body>
 </html>
