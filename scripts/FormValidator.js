@@ -82,7 +82,6 @@ _setEventListeners() {
     };
   };
   
-  export const editFormModalWindow = document.querySelector('.formModalCard');
-  export const cardFormModalWindow = document.querySelector('.formModalEdit');
+
 
   

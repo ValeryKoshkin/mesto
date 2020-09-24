@@ -27,7 +27,7 @@ export function openPopup (popup) {
     document.addEventListener('keydown', handleESC); 
 }
 
-function closePopup (popup) {
+export function closePopup (popup) {
     popup.classList.remove('popup_opened');
     document.removeEventListener('keydown',  handleESC); 
 }
@@ -122,7 +122,7 @@ initialCards.forEach((item)=>{
 function renderCard(item) { 
     const card = new Card(item, '.template-card');
     const cardNew = card.generateCard();
-    document.querySelector('.gallery__list').append(cardNew); 
+    document.querySelector('.gallery__list').prepend(cardNew); 
 } ;
 
 const editFormModalWindow = document.querySelector('.formModalCard')

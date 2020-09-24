@@ -1,6 +1,8 @@
+import {openPopup, closePopup} from './index.js';
+
 const popupTypeImage = document.querySelector('.popup_type_image');
 const closeImageButton =popupTypeImage.querySelector('.button_type_close');
-import {openPopup} from './index.js';
+
 export class Card {
     constructor(data, cardSelector) {
         this._name = data.name;
