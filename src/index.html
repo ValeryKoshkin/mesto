@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Проект Место</title>
-	<link rel="stylesheet" type="text/css" href="pages/index.css">
+	
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="Сайт о путешествиях">
     <meta name="keywords" content="html, css">
@@ -22,11 +22,11 @@
 					<img src="image/user__image.jpg" class="profile__image" alt="Жак-Ив Кусто">
 					<div class="profile__info">
 						<h1 class="profile__name">Жак-Ив Кусто</h1>
-						<button class="button button_type_edit" type="button"></button>
+						<button class="button button_type_edit button_type_open" type="button"></button>
 						<h2 class="profile__job">Исследователь океана</h2>
 					</div>
 				</div>
-				<button class="button button_type_add" type="button"></button>
+				<button class="button button_type_add button_type_open" type="button"></button>
 			</section>
 			
 			<section class="gallery">
@@ -58,13 +58,13 @@
 		<div class="popup__container">
 			<h2 class="popup__title">Новое место</h2>
 			<form action="#" class="form formModalCard" name="card"> 
-				<input type="text" name="name" class="form__input form__input_type_place" value="" placeholder="Название" minlength="1" maxlength="25" id="place-input" required autocomplete="off">
+				<input type="text" name="place" class="form__input form__input_type_place" value="" placeholder="Название" minlength="1" maxlength="25" id="place-input" required autocomplete="off">
                 <span class='form__error' id='place-input-error'></span>
-                <input type="url" name="job" class="form__input form__input_type_url" value="" placeholder="Ссылка на картинку" minlength="7" maxlength="200" id="url-input" required autocomplete="off">
+                <input type="url" name="url" class="form__input form__input_type_url" value="" placeholder="Ссылка на картинку" minlength="7" maxlength="200" id="url-input" required autocomplete="off">
                 <span class='form__error' id='url-input-error'></span>
 				<button type="submit" class="form__button form__button_type_add form__button_disabled" disabled>Создать</button>
 			</form>
-			<button type="button" class="button button_type_close"></button>
+			<button type="button" class="button button_type_close"></button> 
 		</div>
 	</div>	
 
@@ -86,6 +86,6 @@
 			</div>
 		</li>
 	</template>
-	<script type="module" src="scripts/index.js"></script>
+	 
 </body>
 </html>
