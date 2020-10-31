@@ -1,5 +1,4 @@
 export class FormValidator {
-  
   constructor (validationConfig, form) {
    this._validationConfig = validationConfig
    this._formElement = form;
@@ -8,6 +7,7 @@ export class FormValidator {
    this._inactiveButtonClass = validationConfig.inactiveButtonClass;
    this._submitButtonSelector = validationConfig.submitButtonSelector;
    this._inputSelector = validationConfig.inputSelector;
+   this._formErrors = Array.from(document.querySelectorAll('.form__error'))
   }
   
   _showError ( inputElement, errorMessage) {
@@ -51,25 +51,19 @@ export class FormValidator {
   };
   };
   
-  _deleteError (inputElement) {
-    const buttonList = Array.from(document.querySelectorAll('.button'))
-    const errorSpanList = Array.from(document.querySelectorAll('.form__error'));
-      buttonList.forEach((button)=>{
-        button.addEventListener('click', ()=>{
-          inputElement.classList.remove(this._inputErrorClass); //удалили нижнюю границу
-          errorSpanList.forEach((item)=>{
-            item.textContent='';                    //удалили текст ошибок
-          })
-        })
-      })
-};
+  cleanErrors() { 
+  const errorSpanList = this._formErrors
+  const inputList = Array.from(document.querySelectorAll(this._inputSelector));
+  inputList.forEach((item)=>{item.classList.remove(this._inputErrorClass)})
+  errorSpanList.forEach((item)=>{item.textContent = ''})
+  };
 
-_setEventListeners() {
+  _setEventListeners() {
     this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
     this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
     this._toggleButtonState();
     this._inputList.forEach((inputElement) => {
-        this._deleteError(inputElement) ;
+        this.cleanErrors() ;
           inputElement.addEventListener('input',  () => {
         this._checkInputValidity( inputElement);
         this._toggleButtonState();

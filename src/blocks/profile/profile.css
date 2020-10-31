@@ -3,7 +3,6 @@
 @import url(./__job/profile__job.css);
 @import url(./__image/profile__image.css);
 
-
 .profile {
 	display: -webkit-flex;
 	display: -moz-flex;

@@ -8,7 +8,6 @@
 	align-items: center;
 }
 
-
 @media screen and (max-width: 614px) {
 	.profile__card {
 		-webkit-flex-direction: column;

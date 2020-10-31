@@ -36,6 +36,7 @@ export const initialCards = [
 
 export const popupTypeEdit = document.querySelector('.popup_type_edit');
 export const popupTypeAdd = document.querySelector('.popup_type_add');
+export const popupTypeImage = document.querySelector('.popup_type_image');
 export const popupList = Array.from(document.querySelectorAll('.popup'));
 export const openEditModalButton = document.querySelector('.button_type_edit');
 export const openAddModalButton = document.querySelector('.button_type_add');
@@ -46,5 +47,10 @@ export const cardListSelector = '.gallery__list'
 export const template = '.template-card'
 export const placeInput = document.querySelector('.form__input_type_place');
 export const urlInput = document.querySelector('.form__input_type_url');
-
+export const nameInput = document.querySelector('.form__input_type_name')
+export const jobInput = document.querySelector('.form__input_type_job')
+export const personInfo = {
+    name: '.profile__name',
+    job: '.profile__job',
+  };
 

@@ -1,21 +1,18 @@
 import './index.css';
 import { Card } from '../components/Card.js'
 import { FormValidator } from '../components/FormValidator.js';
-import { validationConfig, initialCards } from '../utils/constants.js';
-import UserInfo, { personInfo } from '../components/UserInfo.js';
-import {popupTypeImage} from '../components/Card.js'
+import UserInfo from '../components/UserInfo.js';
 import {PopupWithForm} from '../components/PopupWithForm.js'
 import {PopupWithImage} from '../components/PopupWithImage.js'
 import Section from '../components/Section.js'
-import { popupTypeEdit, popupTypeAdd, openEditModalButton, openAddModalButton, buttonTypeAdd, buttonTypeEdit, inactiveButton, cardListSelector, template, placeInput, urlInput} from '../utils/constants.js'
-import { closeByOverlay, setClosePopupOverlay, enableButton, disableButton} from '../utils/utils.js';
-
-
-setClosePopupOverlay (closeByOverlay);
+import {validationConfig, initialCards, popupTypeEdit, popupTypeAdd, popupTypeImage, openEditModalButton, openAddModalButton, buttonTypeAdd, buttonTypeEdit, inactiveButton, cardListSelector, template, placeInput, urlInput, nameInput, jobInput, personInfo} from '../utils/constants.js'
+import { enableButton, disableButton} from '../utils/utils.js';
 
 openEditModalButton.addEventListener('click', () => {
+    const inputs = user.getUserInfo()
     popupForm.open();   //открытие попапа формы
-    user.getUserInfo(); //получение данных юзера
+    nameInput.value = inputs.name
+    jobInput.value = inputs.job
     enableButton(buttonTypeEdit, inactiveButton); //активация кнопки
 }); 
 
@@ -27,12 +24,20 @@ openAddModalButton.addEventListener('click', () => {
 const user = new UserInfo (personInfo) //инстанс юзеринфо
 
 const popupForm = new PopupWithForm(popupTypeEdit, {handleFormSubmit:()=>{
-    user.setUserInfo() //добавление данных юзера на страницу
-    popupForm.close()
+    const data = {
+        name: document.querySelector('.form__input_type_name').value,
+        job: document.querySelector('.form__input_type_job').value
     }
-});
+    user.setUserInfo(data) //добавление данных юзера на страницу
+    popupForm.close()
+    }, handleClose:()=>{editFormValidator.cleanErrors()}
+    }, 
+);
 
 popupForm.setEventListeners();
+
+const popupImg = new PopupWithImage(popupTypeImage);
+popupImg.setEventListeners();
 
 const popupAdd = new PopupWithForm(popupTypeAdd, {handleFormSubmit:()=>{
     const cardInfo = {name: placeInput.value,   // взяли данные о картинке
@@ -40,16 +45,14 @@ const popupAdd = new PopupWithForm(popupTypeAdd, {handleFormSubmit:()=>{
 
     const cardNew = new Card(cardInfo, template, 
         {handleCardClick:()=>{ //события по сабмиту
-            const popupImg = new PopupWithImage(popupTypeImage, cardInfo)
-            popupImg.open();
-            popupImg.setEventListeners()
+            popupImg.open(cardInfo)
             }
         });
 
     const cardNewAdd = cardNew.generateCard() 
             cardList.addItem(cardNewAdd)
             popupAdd.close()
-    }
+    } ,handleClose:()=>{cardFormValidator.cleanErrors()}
     
 })
 
@@ -59,9 +62,8 @@ const cardList = new Section ({
     data: initialCards, //отрисовка изначального массива карточек
     renderer: (item)=>{
         const card = new Card(item, template, {handleCardClick:()=>{
-        const popupImg = new PopupWithImage(popupTypeImage, item) //события по клику на саму пикчу
-              popupImg.open() ;
-              popupImg.setEventListeners()
+            
+            popupImg.open(item)
             }
         });
         const cardNew = card.generateCard();

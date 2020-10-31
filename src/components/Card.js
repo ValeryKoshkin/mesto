@@ -1,10 +1,9 @@
-export const popupTypeImage = document.querySelector('.popup_type_image');
 export class Card {
     constructor(data,  cardSelector, {handleCardClick} ) {
         this._name = data.name;
         this._link = data.link
         this._cardSelector = cardSelector;
-        this.handleCardClick = handleCardClick;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
@@ -23,7 +22,7 @@ export class Card {
     _setEventListeners() { 
         //открытие попапа 
         this._element.querySelector('.gallery__image').addEventListener('click', () => {
-            this.handleCardClick();
+            this._handleCardClick();
         });
         //тогл лайка
         this._element.querySelector('.button_type_like').addEventListener('click', ()=>{
@@ -40,8 +39,8 @@ export class Card {
     }
 
     _deleteCard() {
-        const closestButton = this._element.closest('.gallery__item'); 
-        closestButton.remove(); 
+         
+        this._element.remove(); 
         this._element= null;
     }
 };
