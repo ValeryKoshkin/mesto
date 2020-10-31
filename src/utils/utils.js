@@ -1,5 +1,3 @@
-
-
 export function enableButton (button, buttonModificator) { 
   button.classList.remove(buttonModificator); 
   button.disabled = false; 
