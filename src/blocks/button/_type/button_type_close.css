@@ -11,9 +11,9 @@
 
 @media screen and (max-width: 520px) {
 	.button_type_close{
-		width: 25px;
-    	height: 25px;
-    	top: -20px;
-    	right: -20px;
+	 width: 25px;
+     height: 25px;
+     top: -20px;
+     right: -20px;
 	}
 }
