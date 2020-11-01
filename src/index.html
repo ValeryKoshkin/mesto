@@ -43,7 +43,7 @@
 		<div class="popup__container">
             <h2 class="popup__title">Редактировать профиль</h2>
             <form action="#" class="form formModalEdit" name="user-info" novalidate> 
-                <input type="text" name="name" class="form__input form__input_type_name" value=""  minlength="7" maxlength="25" id="name-input" required autocomplete="off">
+                <input type="text" name="user" class="form__input form__input_type_name" value=""  minlength="7" maxlength="25" id="name-input" required autocomplete="off">
                 <span class='form__error' id='name-input-error'></span>
                 <input type="text" name="job" class="form__input form__input_type_job" value=""  minlength="7" maxlength="25" id="job-input" required autocomplete="off">
                 <span class='form__error' id='job-input-error'></span>
@@ -53,13 +53,13 @@
         </div>
 	</div>	
 
-	<div class="popup popup_type_add">
+	<div class="popup popup_type_add"> 
 		<div class="popup__container">
 			<h2 class="popup__title">Новое место</h2>
 			<form action="#" class="form formModalCard" name="card"> 
-				<input type="text" name="place" class="form__input form__input_type_place" value="" placeholder="Название" minlength="1" maxlength="25" id="place-input" required autocomplete="off">
+				<input type="text" name="name" class="form__input form__input_type_place" value="" placeholder="Название" minlength="1" maxlength="25" id="place-input" required autocomplete="off">
                 <span class='form__error' id='place-input-error'></span>
-                <input type="url" name="url" class="form__input form__input_type_url" value="" placeholder="Ссылка на картинку" minlength="7" maxlength="200" id="url-input" required autocomplete="off">
+                <input type="url" name="link" class="form__input form__input_type_url" value="" placeholder="Ссылка на картинку" minlength="7" maxlength="200" id="url-input" required autocomplete="off">
                 <span class='form__error' id='url-input-error'></span>
 				<button type="submit" class="form__button form__button_type_add form__button_disabled" disabled>Создать</button>
 			</form>

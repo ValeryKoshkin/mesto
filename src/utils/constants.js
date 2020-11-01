@@ -50,7 +50,7 @@ export const urlInput = document.querySelector('.form__input_type_url');
 export const nameInput = document.querySelector('.form__input_type_name')
 export const jobInput = document.querySelector('.form__input_type_job')
 export const personInfo = {
-    name: '.profile__name',
+    user: '.profile__name',
     job: '.profile__job',
   };
 

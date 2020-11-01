@@ -6,10 +6,10 @@ export class PopupWithImage extends Popup {
         this._imageModalPic = this._popupElement.querySelector('.popup__image');
     }
     
-    open(data) {
-        this._imageModalPic.src = data.link;
-        this._imageModalPic.alt = data.name;
-        this._imageModalTitle.textContent = data.name;
+    open({link, name}) {
+        this._imageModalPic.src = link;
+        this._imageModalPic.alt = name;
+        this._imageModalTitle.textContent = name;
         super.open()
     }
 };
